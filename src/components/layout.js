@@ -7,40 +7,49 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import styled from "styled-components"
 
 import Header from "./header"
+import SideBar from "./sidebar"
 import "./layout.css"
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+const StyledGlobalContainer = styled.div`
+  background: #0d1a26;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+`
 
+const StyledSidebar = styled.div`
+  color: palevioletred;
+  background: #888376;
+  flex: 0 0 6rem;
+  height: 100vh;
+`
+
+const StyledMain = styled.main`
+  background: #0d1a26;
+  overflow: scroll;
+  color: white;
+  flex: 1 1 0;
+  padding: 2rem;
+`
+
+const Layout = ({ children }) => {
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    </>
+    <StyledGlobalContainer>
+      <StyledSidebar>
+        <SideBar>
+          <Header />
+          <footer>
+            © {new Date().getFullYear()}, Built with
+            {` `}
+            <a href="https://www.gatsbyjs.org">Gatsby</a>
+          </footer>
+        </SideBar>
+      </StyledSidebar>
+      <StyledMain>{children}</StyledMain>
+    </StyledGlobalContainer>
   )
 }
 

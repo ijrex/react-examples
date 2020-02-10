@@ -1,14 +1,11 @@
 import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
+import { useSiteMetadata } from "../hooks/use-site-metadata"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
+const Header = () => {
+  const { title } = useSiteMetadata()
+
+  return (
     <div
       style={{
         margin: `0 auto`,
@@ -20,23 +17,19 @@ const Header = ({ siteTitle }) => (
         <Link
           to="/"
           style={{
-            color: `white`,
+            color: `rgba(255,255,255,0.9)`,
+            fontFamily: `Titillium Web`,
+            fontWeight: 900,
             textDecoration: `none`,
+            fontSize: `4rem`,
+            letterSpacing: `2px`,
           }}
         >
-          {siteTitle}
+          {title}
         </Link>
       </h1>
     </div>
-  </header>
-)
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
+  )
 }
 
 export default Header
