@@ -1,6 +1,23 @@
 import { Link } from "gatsby"
+import styled from "styled-components"
 import React from "react"
 import { useSiteMetadata } from "../hooks/use-site-metadata"
+
+const Title = styled.h1`
+  font-family: Titillium Web;
+  font-weight: 900;
+  font-size: 4rem;
+  line-height: 0.9;
+  letterspacing: 2px;
+  text-shadow: -4px 8px 1px rgba(0, 0, 0, 0.2);
+  padding-bottom: 2rem;
+  border-bottom: 0.1rem solid #ffa500;
+
+  a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+  }
+`
 
 const Header = () => {
   const { title } = useSiteMetadata()
@@ -10,24 +27,11 @@ const Header = () => {
       style={{
         margin: `0 auto`,
         maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
       }}
     >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `rgba(255,255,255,0.9)`,
-            fontFamily: `Titillium Web`,
-            fontWeight: 900,
-            textDecoration: `none`,
-            fontSize: `4rem`,
-            letterSpacing: `2px`,
-          }}
-        >
-          {title}
-        </Link>
-      </h1>
+      <Title>
+        <Link to="/">{title}</Link>
+      </Title>
     </div>
   )
 }
