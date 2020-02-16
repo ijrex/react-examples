@@ -7,11 +7,8 @@ import { Link } from "gatsby"
 import { useSiteMDX } from "../hooks/use-site-mdx"
 
 const ParentStyledUL = styled.ul`
-  font-family: Titillium Web;
-  font-weight: 400;
-  color: #fff;
   margin: 0;
-  font-size: 1.2rem;
+  padding: 1rem;
 `
 
 const ParentStyledLI = styled.li`
@@ -22,11 +19,7 @@ const ParentStyledLI = styled.li`
 
 const ChildStyledUL = styled.ul`
   display: block;
-  font-family: Titillium Web;
-  font-weight: 400;
-  color: #fff;
   margin: 0;
-  font-size: 1.2rem;
 `
 
 const ChildStyledLI = styled.li`
@@ -40,12 +33,7 @@ const ChildStyledLI = styled.li`
 `
 
 const StyledLink = styled(Link)`
-  color: #fff;
   text-decoration: none;
-
-  &:hover {
-    opacity: 0.8;
-  }
 `
 
 const Nav = ({ children }) => {
@@ -56,12 +44,12 @@ const Nav = ({ children }) => {
       <ParentStyledUL>
         {[...new Set(edges.map(edge => edge.node.frontmatter.category))].map(
           category => (
-            <ParentStyledLI>
+            <ParentStyledLI key={category}>
               <h3>{category}</h3>
               <ChildStyledUL>
                 {edges.map(edge =>
                   edge.node.frontmatter.category === category ? (
-                    <ChildStyledLI>
+                    <ChildStyledLI key={edge.node.frontmatter.title}>
                       <StyledLink to={edge.node.fields.slug}>
                         {edge.node.frontmatter.title}
                       </StyledLink>

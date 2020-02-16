@@ -1,66 +1,59 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
-import styled from "styled-components"
+import { GlobalStyles } from "../styles/global"
+import { lightTheme, darkTheme } from "../styles/theme"
+
+import styled, { ThemeProvider } from "styled-components"
 
 import Header from "./header"
 import Nav from "./nav"
-import "./layout.css"
+import Footer from "./footer"
+import "../styles/layout.css"
 
-const StyledGlobalContainer = styled.div`
-  background: #0d1a26;
+const GlobalContainer = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
 `
 
-const StyledSidebar = styled.div`
-  background: #888376;
+const Sidebar = styled.div`
   display: flex;
+  border-right: ${({ theme }) => theme.border};
   flex-direction: column;
   justify-content: flex-start;
-  flex: 0 0 6rem;
+  flex: 0 0 350px;
   height: 100vh;
-  padding: 1rem;
 `
 
-const StyledMain = styled.main`
-  background: #0d1a26;
+const Main = styled.main`
   overflow: scroll;
-  color: white;
   flex: 1 1 0;
   padding: 2rem;
 `
 
-const StyledFooter = styled.footer`
-  font-family: Titillium Web;
-  font-weight: 400;
-  padding-bottom: 1rem;
-  position: absolute;
-  bottom: 0;
-  color: rgba(0, 0, 0, 0.6);
-`
-
 const Layout = ({ children }) => {
+  const [theme, setTheme] = useState("dark")
+
+  const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark")
+
   return (
-    <StyledGlobalContainer>
-      <StyledSidebar>
-        <Header />
-        <Nav />
-        <StyledFooter>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </StyledFooter>
-      </StyledSidebar>
-      <StyledMain>{children}</StyledMain>
-    </StyledGlobalContainer>
+    <>
+      <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+        <GlobalStyles />
+        <GlobalContainer>
+          <Sidebar>
+            <Header />
+            <Nav />
+            <Footer handleTheme={toggleTheme}>
+              © {new Date().getFullYear()}, Built with
+              {` `}
+              <a href="https://www.gatsbyjs.org">Gatsby</a>
+            </Footer>
+          </Sidebar>
+          <Main>{children}</Main>
+        </GlobalContainer>
+      </ThemeProvider>
+    </>
   )
 }
 
