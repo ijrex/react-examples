@@ -1,7 +1,7 @@
-import React from "react"
-import { Link } from "gatsby"
-import styled from "styled-components"
-import { useSiteMetadata } from "../hooks/use-site-metadata"
+import React from 'react'
+import { Link } from 'gatsby'
+import styled from 'styled-components'
+import { useSiteMetadata } from '../hooks/use-site-metadata'
 
 const Title = styled.h1`
   font-size: 3.5rem;
@@ -23,7 +23,7 @@ const Header = ({ handleTheme }) => {
     <header>
       <Title>
         <Link to="/">
-          <span>{"</>"}</span>
+          <span>{'</>'}</span>
           {title}
         </Link>
       </Title>

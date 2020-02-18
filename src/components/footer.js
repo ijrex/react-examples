@@ -1,6 +1,6 @@
-import React from "react"
-import PropTypes from "prop-types"
-import styled from "styled-components"
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 const StyledFooter = styled.footer`
   padding: 1rem;
@@ -29,8 +29,8 @@ const Button = styled.button`
 const Footer = ({ handleTheme }) => {
   return (
     <StyledFooter>
-      <Button onClick={handleTheme} />© {new Date().getFullYear()}, Built with
-      {` `}
+      <Button onClick={handleTheme} />
+      {`© ${new Date().getFullYear()}, Built with `}
       <a href="https://www.gatsbyjs.org">Gatsby</a>
     </StyledFooter>
   )
