@@ -10,7 +10,7 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
-          default: require.resolve("./src/components/layout.js"),
+          default: require.resolve('./src/components/layout.js'),
         },
       },
     },
@@ -44,10 +44,10 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-web-font-loader",
+      resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ["Source Code Pro:700,400"],
+          families: ['Source Code Pro:700,400'],
         },
       },
     },

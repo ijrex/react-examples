@@ -1,14 +1,13 @@
-import React, { useState } from "react"
-import PropTypes from "prop-types"
-import { GlobalStyles } from "../styles/global"
-import { lightTheme, darkTheme } from "../styles/theme"
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import styled, { ThemeProvider } from 'styled-components'
+import { GlobalStyles } from '../styles/global'
+import { lightTheme, darkTheme } from '../styles/theme'
 
-import styled, { ThemeProvider } from "styled-components"
-
-import Header from "./header"
-import Nav from "./nav"
-import Footer from "./footer"
-import "../styles/layout.css"
+import Header from './header'
+import Nav from './nav'
+import Footer from './footer'
+import '../styles/layout.css'
 
 const GlobalContainer = styled.div`
   width: 100vw;
@@ -32,13 +31,13 @@ const Main = styled.main`
 `
 
 const Layout = ({ children }) => {
-  const [theme, setTheme] = useState("dark")
+  const [theme, setTheme] = useState('dark')
 
-  const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark")
+  const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark')
 
   return (
     <>
-      <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
         <GlobalStyles />
         <GlobalContainer>
           <Sidebar>

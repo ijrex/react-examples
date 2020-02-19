@@ -1,10 +1,9 @@
-import PropTypes from "prop-types"
-import React from "react"
-import styled from "styled-components"
+import React from 'react'
+import styled from 'styled-components'
 
-import { Link } from "gatsby"
+import { Link } from 'gatsby'
 
-import { useSiteMDX } from "../hooks/use-site-mdx"
+import { useSiteMDX } from '../hooks/use-site-mdx'
 
 const ParentStyledUL = styled.ul`
   margin: 0;
@@ -27,7 +26,7 @@ const ChildStyledLI = styled.li`
   display: block;
 
   &::before {
-    content: "\\27F6";
+    content: '\\27F6';
     padding-right: 20px;
   }
 `
@@ -36,7 +35,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `
 
-const Nav = ({ children }) => {
+const Nav = () => {
   const edges = useSiteMDX()
 
   return (
@@ -63,14 +62,6 @@ const Nav = ({ children }) => {
       </ParentStyledUL>
     </>
   )
-}
-
-Nav.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Nav.defaultProps = {
-  siteTitle: ``,
 }
 
 export default Nav
