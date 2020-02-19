@@ -1,4 +1,4 @@
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from 'gatsby'
 
 export const useSiteMDX = () => {
   const { allMdx } = useStaticQuery(
@@ -24,3 +24,5 @@ export const useSiteMDX = () => {
   )
   return allMdx.edges
 }
+
+export default useSiteMDX

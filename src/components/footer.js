@@ -37,7 +37,7 @@ const Footer = ({ handleTheme }) => {
 }
 
 Footer.propTypes = {
-  children: PropTypes.node.isRequired,
+  handleTheme: PropTypes.func.isRequired,
 }
 
 export default Footer

@@ -16,7 +16,7 @@ const Title = styled.h1`
   }
 `
 
-const Header = ({ handleTheme }) => {
+const Header = () => {
   const { title } = useSiteMetadata()
 
   return (

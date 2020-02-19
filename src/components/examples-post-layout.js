@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { graphql, Link } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
@@ -30,3 +31,9 @@ export const pageQuery = graphql`
     }
   }
 `
+
+PageTemplate.propTypes = {
+  data: PropTypes.shape({
+    mdx: PropTypes.shape,
+  }).isRequired,
+}
